@@ -1,0 +1,302 @@
+body {
+    margin: none;
+    padding: none;
+}
+
+.TopBar {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+    background-color: #111111;
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 16px;
+}
+
+.TopBar div{
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    border-width: 3px;
+    border-color: white;
+}
+
+.TopBar h1 {
+    max-width: 30%;
+
+}
+
+.TopBar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+}
+
+.TopBar a{
+    position: relative;
+    right: -37vw;
+    color: white;
+    font-size: 32px;
+    margin-top: 0.5%;
+    cursor: pointer;
+}
+
+.SideBar {
+    background-color: #8BB2CF;
+    width: 12vw;
+    padding: 15px;
+    height: 88.9vh;
+}
+
+.SideBar ul {
+    margin-top: 30%;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+    width: 100%;
+}
+
+.SideBar li {
+    margin-bottom: 15%;
+    display: flex;
+    padding: 1.3vh;
+    cursor: pointer;
+}
+
+.SideBar li:hover {
+    color: white;
+    margin-left: 5%;
+    transition: .3s;
+}
+
+.SideBar li:active {
+    background-color: #9dc8e9;
+    cursor: progress;
+}
+
+.buttonchecked {
+    color: white;
+    margin-left: 5%;
+    background-color: #9dc8e9;
+}
+
+
+.settingsnlogout {
+    margin-top: 50vh;
+}
+
+.gradient_boxes_2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    background-image: linear-gradient(to right,
+        #ff9466,
+        #fea178,
+        #fdaf8b,
+        #ffb696
+    );
+    width: 30%;
+    padding: 3%;
+    background-size: 400%;
+    border-radius: 4px;
+    margin: auto;
+    animation: boxes_animations 3s infinite alternate;
+}
+
+.gradient_boxes {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+    background-image: linear-gradient(to right,
+        #08c585,
+        #08dc92,
+        #0be599,
+        #0ff0a0
+    );
+    width: 30%;
+    padding: 3%;
+    background-size: 400%;
+    border-radius: 4px;
+    margin: auto;
+    animation: boxes_animations 3s infinite alternate;
+}
+
+
+.gradient_boxes p, .gradient_boxes_2 p {
+    font-size: 15px;
+}
+
+.gradient_boxes hr, .gradient_boxes_2 hr {
+    height: 0.21vh;
+    background-color: white;
+}
+
+@keyframes boxes_animations {
+    0% {
+        background-position:left;
+    }
+
+    100% {
+        background-position: right;
+    }
+}
+
+.add_button button{
+    position: relative;
+    left: -37.5vw;
+    display: flex;
+    background-color: #ececec;
+    width: 5vw;
+    padding: 1vh;
+    top: -10vh;
+}
+
+.add_button button:hover {
+    background-color: #d5d5d5;
+}
+
+.add_button button:active {
+    background-color: #c1c1c1;
+}
+
+.standout {
+    width: 100vw;
+    height: 100vh;
+    transition: 0.5s;
+    bottom: 0;
+    left: 0;
+    background-color: #0000005c;
+    position: fixed;
+    opacity: 0.1;
+    animation: add_box 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes add_box {
+    0% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.add_user_box {
+    position: fixed;
+    top: 33vh;
+    left: 42vw;
+    width: 20vw;
+    background-color: #ececec;
+    padding: 1vw;
+    border-radius: 5px;
+}
+
+.name {
+    position: relative;
+    left: 12vw;
+    width: 5vw;
+    max-width: 5vw;
+}
+
+.price {
+    position: relative;
+    left: 25vw;
+    width: 5vw;
+}
+
+.date {
+    position: relative;
+    left: 38vw;
+}
+
+.Subs_Container .material-symbols-outlined {
+    position: relative;
+    left: 57vw;
+}
+
+.standout_2 {
+    width: 100vw;
+    height: 100vh;
+    transition: 0.5s;
+    bottom: 0;
+    left: 0;
+    background-color: #0000005c;
+    position: fixed;
+    animation: delete_box 0.3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes delete_box {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.delete_subs {
+    position: fixed;
+    top: 45vh;
+    left: 47vw;
+    width: 10vw;
+    background-color: #ececec;
+    padding: 1vw;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.add_user_box p{
+    align-self: self-start;
+}
+
+.add_user_box input{
+    width: 100%;
+    outline: none;
+    border-bottom-width: 3px ;
+    border-color: none;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.add_user_box input:focus {
+    transition: 0.3s;
+    border-color: #c2c2c2 ;
+}
+
+.add_user_box button, .delete_subs button {
+    background-color: #8BB2CF;
+    width: 5vw;
+    padding: .3vw;
+}
+
+.add_user_box button:hover, .delete_subs button:hover {
+    background-color: #97c0df;
+}
+
+.add_user_box button:active, .delete_subs button:active {
+    background-color: #97c0df;
+    color: white;
+}
+
+.Subs_Container {
+    width: 80vw;
+    height: 30vh;
+}
+
+.Subs_Container ul{
+    list-style-type: none;
+    overflow-y: auto;
+    max-height: 30vh;
+}
+.Subs_Container ul::-webkit-scrollbar {
+    width: 0;
+}
+
+
+

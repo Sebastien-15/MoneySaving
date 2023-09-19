@@ -1,0 +1,199 @@
+.LandingPageOptions {
+    display: flex;
+    width: 70vw;
+    list-style-type: none;
+    font-size: 18px;
+    color: white;
+}
+
+.LandingPageOptions a {
+    position: relative;
+    left: 55vw;
+}
+
+.LandingPageOptions li {
+    width: 10vw;
+    margin-right: -2vw;
+}
+
+.LandingPageOptions a:hover {
+    color: #ff0800;
+    transition: 0.1s;
+    font-weight: 500;
+}
+
+.LandingPageOptions a:active{
+    font-weight: 400;
+}
+
+.Logo_Image {
+    margin-left: 1vw;
+    background-image: url(Logo.png);
+    background-size: cover;
+    width: 13vw;
+    height: 8vh;
+    padding-right: 17vw;
+}
+
+.Logo_Image2 {
+    margin-left: -1vw;
+    margin-bottom: -50vh;
+    background-image: url(Logo.png);
+    background-size: cover;
+    width: 26vw;
+    height: 14vh;
+}
+
+.LandingPage{
+    background-image: url(Background_Image_2.png);
+    background-size: cover;
+}
+
+.LoginPage {
+    background-image: url(Background_Image.png);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+
+.LoginPage a {
+    text-decoration: underline;
+}
+
+.CompanyInfo h1, .CompanyInfo p{
+    width: 100%;
+    transition: 1s;
+}
+
+.CompanyInfo p{
+    font-size: 25px;
+}
+
+.CompanyInfo h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.InfoCreateAccount {
+    margin-top: -10vh;
+}
+
+.InfoCreateAccount h2 {
+    width: 100%;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 2vh;
+}
+
+.InfoCreateAccount input, .LoginPage input {
+    width: 100%;
+    background-color:transparent;
+    margin-bottom: 3vh ;
+    border-top:0;
+    border-left: 0;
+    border-right: 0;
+    border-width: 2px ;
+    border-color: white;
+    color: white;
+}
+
+.LoginPage input {
+    color: black;
+    border-color: black;
+}
+
+.InfoCreateAccount input:focus, .LoginPage input:focus {
+    outline: none;
+    border-color: #e04742;
+    border-width: 3.5px;
+    transition: 0.1s;
+}
+
+.LoginPage button {
+    color: white;
+}
+
+.InfoCreateAccount button, .LoginPage button {
+    background-color: #ed4a45;
+    width: 100%;
+    height: 8vh;
+}
+
+.InfoCreateAccount button:hover, .LoginPage button:hover {
+    background-color: #e04742;
+}
+
+.InfoCreateAccount button:active, .LoginPage button:active {
+    background-color: #d1433e;
+}
+
+.InfoCreateAccount input::placeholder {
+    color: white;
+    font-style: italic;
+}
+
+.loading {
+    background-image: url(Icon.png);
+    width: 9vw;
+    height: 18vh;
+    margin: auto;
+    margin-top: 35vh;
+    background-size: cover;
+    animation: loading_animations 3s infinite;
+}
+
+@keyframes loading_animations {
+    0% {
+        margin-top: 35vh;
+    }
+
+    50% {
+        margin-top: 30vh;
+    }
+
+    75% {
+        margin-top: 40vh;
+    }
+
+    100% {
+        margin-top: 35vh;
+    }
+}
+
+.features {
+    background-color: white;
+    padding: 5px;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 60vh;
+}
+
+.features h2 {
+    color: #ed4a45;
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: -10px;
+}
+
+.features p {
+    color: rgba(0, 0, 0, 0.64);
+    font-weight: 350;
+    font-size: 18px;
+    width: 20vw;
+
+}
+
+.features_h1 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #ed4a45;
+    margin-bottom: 7vh;
+}
+
+.features h3 {
+    color: #ed4a45;
+    font-size: 200px;
+    margin-bottom: 10px;
+}
