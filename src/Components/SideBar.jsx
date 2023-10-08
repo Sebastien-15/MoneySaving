@@ -9,6 +9,7 @@ export function SideBar(){
     async function HandleLogout(){
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('user_subs')
+        sessionStorage.removeItem('user_info')
         const { error } = await Supabase.auth.signOut()
         navigate('/')
     }

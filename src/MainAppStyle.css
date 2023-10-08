@@ -298,5 +298,70 @@ body {
     width: 0;
 }
 
+.setting_h1 {
+    font-size: 50px;
+    font-weight: 500;
+    position: relative;
+    top: -10vh;
+    left: -20vw;
+}
+
+.setting_options {
+    height: 50vh;
+    list-style: none;
+    width: 60vw;
+    position: relative;
+    left: 10vw;
+    top: -2vh;
+}
+
+.setting_options_li {
+    display: flex;
+    border-width: 1px;
+    border-color: black;
+    margin-bottom: 3vh;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.setting_options_li:hover , .setting_options_extra li:hover {
+    background-color: rgba(0, 0, 0, 0.058);
+    transition: .3s;
+}
+
+.setting_options i {
+    position: relative;
+    left: .5vw;
+}
+
+.setting_options_extra {
+    list-style: none;
+    position: relative;
+    top: -3vh;
+    left: 3vw;
+    animation: setting_options_extra_ani .3s ;
+}
+
+.setting_options_extra li {
+    border-width: 1px;
+    width: 95%;
+    border-top: none;
+    border-color: rgba(0, 0, 0, 0.371);
+    padding: 5px;
+    border-radius: 3px;
+}
 
 
+@keyframes setting_options_extra_ani {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

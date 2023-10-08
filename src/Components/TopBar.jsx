@@ -1,22 +1,36 @@
+import { useState } from "react";
 import { GetUserInfo } from "../Utitlities/Get_User_Info";
 
 
 
 export function TopBar(){
-    var token = ""
-    if (sessionStorage.getItem('token')){
-         token = JSON.parse(sessionStorage.getItem('token')).user.id
-      }
-      var user_info = GetUserInfo(token)
-    
-      if (user_info){
-        var name = user_info[0].first_name
-      }
+  const [Userinfo, setUserInfo] = useState()
+
+  if (!Userinfo){
+    setUserInfo(JSON.parse(sessionStorage.getItem('user_info')))
+  }
+
+  var token = ""
+  if (sessionStorage.getItem('token')){
+        token = JSON.parse(sessionStorage.getItem('token')).user.id
+    }
+  
+  if (Userinfo){
+    var name = Userinfo[0].first_name
+    var profile_link
+    if (!Userinfo[0].profile_pic){
+      profile_link = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+    }
+    else{
+      profile_link = Userinfo[0].profile_pic
+    }
+  }
+
     return (
         <section className="TopBar">
             <h1>Welcome, {name}</h1>
             <a className="material-symbols-outlined" id="icons">notifications</a>
-            <div><img src="https://www.hepper.com/wp-content/uploads/2022/04/caracal-close-up_onkelglocke_Pixabay.jpeg"></img></div>
+            <div><img src={profile_link}></img></div>
         </section>
     )
 }

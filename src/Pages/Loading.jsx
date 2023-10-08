@@ -14,17 +14,25 @@ export function LoadingPage() {
         }
     }
 
-    var user_info = GetUserInfo(token)
     if (token){
+        var user_info = GetUserInfo(token)
         var user_subs = GetUserSubs(token)
+        if (user_info){
+            sessionStorage.setItem('user_info', JSON.stringify(user_info))
+        }
         if (user_subs){
             sessionStorage.setItem('user_subs', JSON.stringify(user_subs))
+        }
+        else{
+            sessionStorage.setItem('user_subs', JSON.stringify([]))
         }   
     }
 
     if (sessionStorage.getItem('user_subs')){
-        navigate('/main_page')
-        navigate('main_page/dashboard')
+        if (sessionStorage.getItem('user_info')){
+            navigate('/main_page')
+            navigate('main_page/dashboard')
+        }
     }
 
 

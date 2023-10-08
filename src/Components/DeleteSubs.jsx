@@ -1,7 +1,7 @@
 import { HStack, useToast } from "@chakra-ui/react";
 import { Supabase } from "../supabase";
 
-export function DeleteSubs ({ setToDisplay, id }){
+export function DeleteSubs ({ setToDisplay, id, setTotal, setUsersubs, check }){
 
     console.log(id)
     let toast = useToast()
@@ -9,11 +9,16 @@ export function DeleteSubs ({ setToDisplay, id }){
 function deletting(id){
     async function deleting( id ){
         console.log(id)   
-        const { error } = await Supabase
+        const { data, error } = await Supabase
         .from('User_Subs')
         .delete()
         .eq('id', id)
+        .select()
         setToDisplay(false)
+
+        if (data){
+            console.log(data)
+        }
 
         if (error){
             toast({
@@ -27,11 +32,32 @@ function deletting(id){
         else {
             toast({
                 title: 'Success',
-                description: "Item deleted successfully, refresh to see changes",//(Success).message,
+                description: "Item deleted successfully",//(Success).message,
                 status: 'success',
                 duration: 2000,
                 isClosable: true,
+                color: "#0ff0a0"
             })
+
+            if (check){
+                const { dat, error } = await Supabase
+                .from("User_Subs")
+                .select()
+                .eq("user_id", token )
+    
+                if (dat){
+                    console.log(dat)
+                    setUsersubs(dat)
+                    setTotal(helper())
+                    setcheck(false)
+                }
+        
+    
+    
+            if (error){
+                console.log(error)
+            }
+            }
         }
 }
     deleting(id)

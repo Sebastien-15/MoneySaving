@@ -1,29 +1,57 @@
 import { Center, HStack, VStack } from "@chakra-ui/react";
 import { AddUserSubs } from "../Components/AddUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GetUserSubs } from "../Utitlities/Get_User_Subs";
 import { DeleteSubs } from "../Components/DeleteSubs";
 import { useNavigate } from "react-router-dom";
 import { FormatDate } from "../Utitlities/formatdate";
+import { Supabase } from "../supabase";
 
 export function DashBoard(){
     const [display, setDisplay] = useState(false)
     const [todelete, setToDelete] = useState(false)
     const [iddelete, setIdDelete] = useState()
-    const [Usersubs, setUsersubs] = useState()
+    const [Usersubs, setUsersubs] = useState(JSON.parse(sessionStorage.getItem('user_subs')))
+    const [total, setTotal] = useState(helper())
+    const [check, setcheck] = useState(false)
 
-    const ar = []
-    
     var token 
     if (sessionStorage.getItem('token')){
          token = JSON.parse(sessionStorage.getItem('token')).user.id
     }
+    
 
-    if (!Usersubs){
-        setUsersubs(JSON.parse(sessionStorage.getItem('user_subs')))
+    useEffect(() => {
+        state_update();
+    });
+
+    async function state_update(){
+        var Subz = Supabase.channel('custom-all-channel')
+        .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'User_Subs' },
+        (payload) => {
+            if (payload.new){
+                if (payload.eventType == 'INSERT') {
+                    setUsersubs([...Usersubs, payload.new]) 
+                    setTotal(helper())
+                }
+                if (payload.eventType == 'DELETE') {
+                    setcheck(true)
+                } 
+            }
+        }
+        )
+        .subscribe()
+
+    
     }
+    
+    
 
-    function total(){
+    
+
+    function helper(){
         let result = 0
         if (Usersubs){
             for (let i = 0; i < Usersubs.length; i++){
@@ -32,8 +60,9 @@ export function DashBoard(){
             }
         }
         return result
-    }   
-
+    }
+    
+        
     function adding(){
         if (display){
             setDisplay(false)
@@ -51,7 +80,7 @@ export function DashBoard(){
         else {
             setToDelete(true)
             setIdDelete(id)
-        }
+                    }
     }
 
     return (
@@ -60,7 +89,7 @@ export function DashBoard(){
                 <Center>
                     <HStack w={"88vw"} color="white" position='relative' top={'-20vh'}>
                         <div className="gradient_boxes">
-                            <h2>${Math.round(total() *100) / 100}</h2>
+                            <h2>${Math.round(total * 100) / 100}</h2>
                             <p>Total payments per month</p>
                             <hr></hr>
                         </div>
@@ -76,7 +105,8 @@ export function DashBoard(){
                         <i className="material-symbols-outlined" id="icons" >add</i> <a>Add</a>
                     </button></div>
                     {display && (
-                        <AddUserSubs setDisplay={setDisplay} />
+                        <AddUserSubs setDisplay={setDisplay} Usersubs = {Usersubs} setUsersubs={setUsersubs} setTotal={setTotal}
+                        total = {total}/>
                     )}
                 <div className="Subs_Container" >
                     <HStack  w="inherit" position="relative" left=".7vw">
@@ -88,7 +118,7 @@ export function DashBoard(){
                     <hr></hr>
                     <ul>
                     {todelete && (
-                                        <DeleteSubs setToDisplay={setToDelete} id={iddelete}/>
+                                        <DeleteSubs setToDisplay={setToDelete} id={iddelete} setUsersubs ={setUsersubs} setTotal={setTotal} check={check}/>
                                     )}
                     {Usersubs && Usersubs.map(subs => (
                         <li id={subs.id}>

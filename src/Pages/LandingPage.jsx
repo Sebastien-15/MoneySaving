@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 export function LandingPage(){
-    console.log(uuidv4())
     const [fName, setfName] = useState()
     const [lName, setlName] = useState()
     const [EmailAddress, setEmailAddress] = useState()

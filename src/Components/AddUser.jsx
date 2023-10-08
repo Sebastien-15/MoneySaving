@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 
-export function AddUserSubs ({ setDisplay }){
+export function AddUserSubs ({ setDisplay, setUsersubs, Usersubs, setTotal, total}){
     let toast = useToast()
     var token = ""
     if (sessionStorage.getItem('token')){
@@ -13,7 +13,7 @@ export function AddUserSubs ({ setDisplay }){
     const [name, setName] = useState()
     const [price, setPrice] = useState()
     const [date, setStartDate] = useState()
-
+    
     function reset(){
         setName()
         setPrice()
@@ -27,7 +27,7 @@ export function AddUserSubs ({ setDisplay }){
         let future = new Date(Number(current[0]), Number(current[1]), Number(current[2]))
         future = String(future).split(' ')
         let renewal_date = future[1] + ' ' + future[2] + ' ' + future[3]
-
+        
             const fetchData = async () => {
                 const { error } = await Supabase
                 .from("User_Subs")
@@ -45,13 +45,13 @@ export function AddUserSubs ({ setDisplay }){
                 else {
                     toast({
                         title: 'Success',
-                        description: "Item added successfully, refresh to see changes",//Item was added 
+                        description: "Item added successfully",//Item was added 
                         status: 'success',
                         duration: 2000,
                         isClosable: true,
+                        color: "#0ff0a0"
                     })
 
-                    sessionStorage.setItem('user_subs', JSON.stringify([o,8,8,8,9]))
                     
                 }
             }
