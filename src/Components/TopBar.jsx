@@ -16,6 +16,7 @@ export function TopBar(){
     }
   
   if (Userinfo){
+    console.log(Userinfo)
     var name = Userinfo[0].first_name
     var profile_link
     if (!Userinfo[0].profile_pic){

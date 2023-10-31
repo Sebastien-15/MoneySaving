@@ -1,9 +1,9 @@
-import { HStack, VStack, useStatStyles, useToast } from "@chakra-ui/react";
+import { Box, HStack, VStack, useStatStyles, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Supabase } from "../supabase";
 import { useNavigate } from "react-router-dom";
 
-export function AddUserSubs ({ setDisplay, setUsersubs, Usersubs, setTotal, total}){
+export function AddUserSubs ({ setDisplay }){
     let toast = useToast()
     var token = ""
     if (sessionStorage.getItem('token')){
@@ -36,20 +36,28 @@ export function AddUserSubs ({ setDisplay, setUsersubs, Usersubs, setTotal, tota
                 if (error){
                     toast({
                         title: 'Error',
-                        description: "Could not add Item",//(err as Error).message,
-                        status: 'error',
-                        duration: 2000,
-                        isClosable: true,
+                        position: "top-center",
+                        duration: 1500,
+                        render: () => (
+                            <HStack color="black" p={3} bg="White" borderRadius="10px">
+                                <Box color="red">
+                              <span class="material-symbols-outlined">cancel</span></Box><div>Error in adding Item</div>
+                            </HStack>
+                        )
                     })
                 }
                 else {
                     toast({
                         title: 'Success',
-                        description: "Item added successfully",//Item was added 
-                        status: 'success',
-                        duration: 2000,
-                        isClosable: true,
-                        color: "#0ff0a0"
+                        position: "top-center",
+                        duration: 1500,
+                        render: () => (
+                            <HStack color="black" p={3} bg="White" borderRadius="10px">
+                                <Box color="green">
+                              <span class="material-symbols-outlined">check_circle
+                              </span></Box><div>Item added successfully</div>
+                            </HStack>
+                        )
                     })
 
                     

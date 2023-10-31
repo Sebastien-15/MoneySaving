@@ -1,7 +1,7 @@
 import { Center, HStack, VStack } from "@chakra-ui/react";
 import { AddUserSubs } from "../Components/AddUser";
 import { useEffect, useState } from "react";
-import { GetUserSubs } from "../Utitlities/Get_User_Subs";
+//import { GetUserSubs } from "../Utitlities/Get_User_Subs";
 import { DeleteSubs } from "../Components/DeleteSubs";
 import { useNavigate } from "react-router-dom";
 import { FormatDate } from "../Utitlities/formatdate";
@@ -11,9 +11,10 @@ export function DashBoard(){
     const [display, setDisplay] = useState(false)
     const [todelete, setToDelete] = useState(false)
     const [iddelete, setIdDelete] = useState()
-    const [Usersubs, setUsersubs] = useState(JSON.parse(sessionStorage.getItem('user_subs')))
-    const [total, setTotal] = useState(helper())
+    const [Usersubs, setUsersubs] = useState()
+    const [total, setTotal] = useState()
     const [check, setcheck] = useState(false)
+    const [refresh, setRefresh] = useState(false)
 
     var token 
     if (sessionStorage.getItem('token')){
@@ -22,34 +23,55 @@ export function DashBoard(){
     
 
     useEffect(() => {
-        state_update();
-    });
-
     async function state_update(){
         var Subz = Supabase.channel('custom-all-channel')
         .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'User_Subs' },
         (payload) => {
-            if (payload.new){
-                if (payload.eventType == 'INSERT') {
-                    setUsersubs([...Usersubs, payload.new]) 
-                    setTotal(helper())
-                }
-                if (payload.eventType == 'DELETE') {
-                    setcheck(true)
-                } 
+            if (payload.eventType === 'DELETE' || payload.eventType === 'INSERT' || payload.eventType === 'UPDATE'){
+                change()
+                console.log('Change received!', payload)
             }
         }
         )
         .subscribe()
-
-    
     }
-    
-    
+        state_update();
+    });
 
-    
+    function change(){
+        if (refresh){
+            console.log('refresh')
+            setRefresh(false)
+        }
+        else{
+            console.log('refresh')
+            setRefresh(true)
+        }
+    }
+
+
+    useEffect(() => { 
+        async function get_subs(){
+            const { data, error } = await Supabase
+            .from('User_Subs')
+            .select()
+            .eq('user_id', token)
+
+            if (error){
+                console.log(error)
+            }
+            else {
+                setUsersubs(data)
+            }
+        }
+        get_subs()
+    }, [refresh])
+
+    useEffect(() => {
+        setTotal(helper()) 
+    }, [Usersubs])
 
     function helper(){
         let result = 0
@@ -105,7 +127,7 @@ export function DashBoard(){
                         <i className="material-symbols-outlined" id="icons" >add</i> <a>Add</a>
                     </button></div>
                     {display && (
-                        <AddUserSubs setDisplay={setDisplay} Usersubs = {Usersubs} setUsersubs={setUsersubs} setTotal={setTotal}
+                        <AddUserSubs setDisplay={setDisplay} 
                         total = {total}/>
                     )}
                 <div className="Subs_Container" >
@@ -118,7 +140,7 @@ export function DashBoard(){
                     <hr></hr>
                     <ul>
                     {todelete && (
-                                        <DeleteSubs setToDisplay={setToDelete} id={iddelete} setUsersubs ={setUsersubs} setTotal={setTotal} check={check}/>
+                                        <DeleteSubs setToDisplay={setToDelete} id={iddelete} />
                                     )}
                     {Usersubs && Usersubs.map(subs => (
                         <li id={subs.id}>

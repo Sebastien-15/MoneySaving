@@ -53,7 +53,7 @@ export function LoginPage({ setToken }){
             <form className="LoginPage" onSubmit={HandleSubmit}>
                 <Center>
                     <div className='Logo_Image2'> </div>
-                    <VStack position="fixed" w={"30vw"} marginTop={"100vh"} bgColor="white" padding={"20px"} opacity={"0.95"} borderRadius={"5px"}>
+                    <VStack position="fixed" w={"30vw"} marginTop={"100vh"} bgColor="white" padding={"20px"} opacity={"0.95"}>
                         <input placeholder='Email Adress' value={EmailAddress} onChange={(e) => setEmailAddress(e.target.value)}></input>
                         <input placeholder='Password' type='password' value={Password} onChange={(e) => setPassword(e.target.value)}></input>
                         <button type='submit'>Log In</button>

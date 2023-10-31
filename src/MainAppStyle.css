@@ -64,6 +64,7 @@ body {
     display: flex;
     padding: 1.3vh;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .SideBar li:hover {
@@ -80,7 +81,7 @@ body {
 .buttonchecked {
     color: white;
     margin-left: 5%;
-    background-color: #9dc8e9;
+    background-color: #a9d0ee;
 }
 
 
@@ -152,6 +153,7 @@ body {
     width: 5vw;
     padding: 1vh;
     top: -10vh;
+    border-radius: 3px;
 }
 
 .add_button button:hover {
@@ -365,3 +367,5 @@ body {
         opacity: 1;
     }
 }
+
+
