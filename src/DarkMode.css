@@ -1,0 +1,135 @@
+.SideBar_dark {
+    background-color: #838e98;
+    width: 12vw;
+    padding: 15px;
+    height: 88.8vh;
+}
+
+.SideBar_dark ul {
+    margin-top: 30%;
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+    width: 100%;
+}
+
+.SideBar_dark li {
+    margin-bottom: 15%;
+    display: flex;
+    padding: 1.3vh;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.SideBar_dark li:hover {
+    color: white;
+    margin-left: 5%;
+    transition: .3s;
+}
+
+.SideBar_dark li:active {
+    background-color: #97a0a8;
+    cursor: progress;
+}
+
+.buttonchecked_dark {
+    color: white;
+    margin-left: 5%;
+    background-color: #abb2b9;
+}
+
+.add_button_dark button{
+    position: relative;
+    color: white;
+    left: -37.5vw;
+    display: flex;
+    background-color: #2c3134;
+    width: 5vw;
+    padding: 1vh;
+    top: -10vh;
+    border-radius: 3px;
+}
+
+.add_button_dark button:hover {
+    background-color: #3a4145;
+}
+
+.setting_pass_dark input, .setting_pics_dark input{
+    width: 100%;
+    outline: none;
+    background-color: #2d3235;
+    border-bottom-width: 3px ;
+    border-color: none;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.setting_pass_dark input:focus {
+    transition: 0.3s;
+    border-color: #1c1f21 ;
+}
+
+.setting_pics_dark button {
+    background-color: #8BB2CF;
+    width: 5vw;
+    padding: .3vw;
+    border-radius: 5px;
+}
+
+.setting_pics_dark button:hover{
+    background-color: #97c0df;
+}
+
+.setting_pics_dark button:active{
+    background-color: #97c0df;
+    color: white;
+}
+
+.setting_options_dark_li {
+    display: flex;
+    border-color: #2c3134;
+    margin-bottom: 3vh;
+    border-radius: 3px;
+    padding: 7px;
+    background-color: #2c3134;
+}
+
+.setting_options_dark_li:hover , .setting_options_dark_extra li:hover {
+    background-color: #3a4145;
+    transition: .3s;
+}
+
+.delete_subs_dark {
+    position: fixed;
+    top: 45vh;
+    left: 47vw;
+    width: 10vw;
+    background-color: #1c1f21;
+    padding: 1vw;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+.add_user_box_dark input:focus, .setting_pics_dark input:focus, .setting_pass_dark input:focus {
+    transition: 0.3s;
+    border-color: #808080 ;
+}
+
+.add_user_box_dark button, .delete_subs_dark button, .setting_pics_dark button {
+    background-color: #abb2b9;
+    width: 5vw;
+    padding: .3vw;
+    border-radius: 5px;
+}
+
+.add_user_box_dark button:hover, .delete_subs_dark button:hover, .setting_pics_dark button:hover{
+    background-color: #c0c7ce;
+}
+
+.add_user_box_dark button:active, .delete_subs_dark button:active, .setting_pics_dark button:active{
+    background-color: #97a0a8;
+    color: white;
+}
